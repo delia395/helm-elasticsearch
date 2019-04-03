@@ -42,15 +42,15 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            - topologyKey: "kubernetes.io/hostname"
-              labelSelector:
-                matchLabels:
-                  component: {{ template "fullname" . }}
-                  role: data
+          - topologyKey: "kubernetes.io/hostname"
+            labelSelector:
+              matchLabels:
+                component: {{ template "fullname" . }}
+                role: data
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 1
             podAffinityTerm:
-            - topologyKey: "failure-domain.beta.kubernetes.io/zone"
+              topologyKey: "failure-domain.beta.kubernetes.io/zone"
               labelSelector:
                 matchLabels:
                   component: {{ template "fullname" . }}
